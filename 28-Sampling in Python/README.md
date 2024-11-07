@@ -3,7 +3,7 @@
 ## I. Introduction to Sampling
 
 #### Sampling and point estimates
-Hi! Welcome to the course! I’m James, and I’ll be your host as we delve into the world of sampling data with Python. To start, let’s look at what sampling is and why it might be useful.
+What is sampling and why it might be useful?
 
 2. Estimating the population of France
 Let's consider the problem of counting how many people live in France. The standard approach is to take a census. This means contacting every household and asking how many people live there.
@@ -15,24 +15,26 @@ Since there are millions of people in France, this is a really expensive process
 In 1786, Pierre-Simon Laplace realized you could estimate the population with less effort. Rather than asking every household who lived there, he asked a small number of households and used statistics to estimate the number of people in the whole population. This technique of working with a subset of the whole population is called sampling.
 
 5. Population vs. sample
-Two definitions are important for this course. The population is the complete set of data that we are interested in. The previous example involved the literal population of France, but in statistics, it doesn't have to refer to people. One thing to bear in mind is that there is usually no equivalent of the census, so typically, we won't know what the whole population is like - more on this in a moment. The sample is the subset of data that we are working with.
+Two definitions are important for this course.
+- The population is the complete set of data that we are interested in. The previous example involved the literal population of France, but in statistics, it doesn't have to refer to people. One thing to bear in mind is that there is usually no equivalent of the census, so typically, we won't know what the whole population is like - more on this in a moment.
+- The sample is the subset of data that we are working with.
 
-6. Coffee rating dataset
+7. Coffee rating dataset
 Here's a dataset of professional ratings of coffees. Each row corresponds to one coffee, and there are thirteen hundred and thirty-eight rows in the dataset. The coffee is given a score from zero to one hundred, which is stored in the total_cup_points column. Other columns contain contextual information like the variety and country of origin and scores between zero and ten for attributes of the coffee such as aroma and body. These scores are averaged across all the reviewers for that particular coffee. It doesn't contain every coffee in the world, so we don't know exactly what the population of coffees is. However, there are enough here that we can think of it as our population of interest.
 
-7. Points vs. flavor: population
+8. Points vs. flavor: population
 Let's consider the relationship between cup points and flavor by selecting those two columns. This dataset contains all thirteen hundred and thirty-eight rows from the original dataset.
 
-8. Points vs. flavor: 10 row sample
+9. Points vs. flavor: 10 row sample
 The pandas dot-sample method returns a random subset of rows. Setting n to ten means ten random rows are returned. By default, rows from the original dataset can't appear in the sample dataset multiple times, so we are guaranteed to have ten unique rows in our sample.
 
-9. Python sampling for Series
+10. Python sampling for Series
 The dot-sample method also works on pandas Series. Here, using square-bracket subsetting retrieves the total_cup_points column as a Series, and the n argument specifies how many random values to return.
 
-10. Population parameters & point estimates
+11. Population parameters & point estimates
 A population parameter is a calculation made on the population dataset. We aren't limited to counting values either; here, we calculate the mean of the cup points using NumPy. By contrast, a point estimate, or sample statistic, is a calculation based on the sample dataset. Here, the mean of the total cup points is calculated on the sample. Notice that the means are very similar but not identical.
 
-11. Point estimates with pandas
+12. Point estimates with pandas
 Working with pandas can be easier than working with NumPy. These mean calculations can be performed using the dot-mean pandas method.
 
 #### Convenience sampling
@@ -44,24 +46,24 @@ In 1936, a newspaper called The Literary Digest ran an extensive poll to try to 
 
 3. Finding the mean age of French people
 Let's look at another example. While on vacation at Disneyland Paris, you start wondering about the mean age of French people. To get an answer, you ask ten people stood nearby about their ages. Their mean age is twenty-four-point-six years old. Do you think this will be a good estimate of the mean age of all French citizens?
-
 1 Image by Sean MacEntee
-4. How accurate was the survey?
+
+5. How accurate was the survey?
 On the left, you can see mean ages taken from the French census. Notice that the population has been gradually getting older as birth rates decrease and life expectancy increases. In 2015, the mean age was over forty, so our estimate of twenty-four-point-six is way off. The problem is that the family-friendly fun at Disneyland means that the sample ages weren't representative of the general population. There are generally more eight-year-olds than eighty-year-olds riding rollercoasters.
 
-5. Convenience sampling coffee ratings
+6. Convenience sampling coffee ratings
 Let's return to the coffee ratings dataset and look at the mean cup points population parameter. The mean is about eighty-two. One form of convenience sampling would be to take the first ten rows, rather than the random rows we saw in the previous video. We can take the first 10 rows with the pandas head method. The mean cup points from this sample is higher at eighty-nine. The discrepancy suggests that coffees with higher cup points appear near the start of the dataset. Again, the convenience sample isn't representative of the whole population.
 
-6. Visualizing selection bias
+7. Visualizing selection bias
 Histograms are a great way to visualize the selection bias. We can create a histogram of the total cup points from the population, which contains values ranging from around 59 to around 91. The numpy-dot-arange function can be used to create bins of width 2 from 59 to 91. Recall that the stop value in numpy-dot-arange is exclusive, so we specify 93, not 91. Here's the same code to generate a histogram for the convenience sample.
 
-7. Distribution of a population and of a convenience sample
+8. Distribution of a population and of a convenience sample
 Comparing the two histograms, it is clear that the distribution of the sample is not the same as the population: all of the sample values are on the right-hand side of the plot.
 
-8. Visualizing selection bias for a random sample
+9. Visualizing selection bias for a random sample
 This time, we'll compare the total_cup_points distribution of the population with a random sample of 10 coffees.
 
-9. Distribution of a population and of a simple random sample
+10. Distribution of a population and of a simple random sample
 Notice how the shape of the distributions is more closely aligned when random sampling is used.
 
 
